@@ -1,15 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useUserSetingsStore } from './store'
+import { UserSettingsModel } from './models/StoreModels'
 
 function App() {
+  const dark = useUserSetingsStore((state: UserSettingsModel) => state.dark);
+  console.log('dark: ', dark);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
