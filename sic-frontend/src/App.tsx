@@ -11,6 +11,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+      <h1 className="text-3xl font-bold underline text-green-200">
+      Hello world!
+      </h1>
         <img src={logo} className="App-logo" alt="logo" />
         <a
           className="App-link"
