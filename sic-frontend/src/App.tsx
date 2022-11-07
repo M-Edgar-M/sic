@@ -24,7 +24,7 @@ function App() {
         </div>
         <button onClick={() => toggleDark()}>Click Me!</button>
         <div><ThemeSwitcher /></div>
-        <h1 className="text-3xl font-bold underline text-green-200 dark:text-white">
+        <h1 className="text-3xl font-serif font-[600] underline text-black dark:text-white">
           Hello world!
         </h1>
         <img src={logo} className="dark:text-white" alt="logo" />

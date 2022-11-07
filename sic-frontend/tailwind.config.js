@@ -8,6 +8,13 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {},
+    fontFamily: {
+      'josefin-sans': ['Josefin Sans', 'sans-serif'],
+      'open-sans': ['Open Sans', 'sans-serif'],
+      'poppins': ['Poppins', 'sans-serif'],
+      'serif': ['Crimson Text', 'serif']
+
+    }
   },
   plugins: [
     require(newLocalFlowbite)
