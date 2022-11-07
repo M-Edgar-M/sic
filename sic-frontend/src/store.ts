@@ -6,11 +6,7 @@ export const useUserSetingsStore = create<UserSettingsModel>()(
     (set, get) => ({
       dark: false,
       toggleDark: () => {
-        set((state) =>  {
-          // console.log(state)
-          // console.log('get function: ', get().dark)
-        return  {dark: !state.dark}
-        })
+        set((state) =>  ({dark: !state.dark}))
       },
     }),
     {

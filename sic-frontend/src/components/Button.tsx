@@ -9,7 +9,7 @@ function Button<T extends ButtonPropsInterface>({
   color,
   onClick,
   children,
-  classes,
+  className,
 }: T){
   return (
     <button
@@ -21,7 +21,7 @@ function Button<T extends ButtonPropsInterface>({
         height,
         width,
       }}
-      className={classes}
+      className={className}
     >{children}</button>
   );
 }
