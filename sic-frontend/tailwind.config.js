@@ -7,14 +7,21 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    colors: {},
     fontFamily: {
       'josefin-sans': ['Josefin Sans', 'sans-serif'],
       'open-sans': ['Open Sans', 'sans-serif'],
       'poppins': ['Poppins', 'sans-serif'],
       'serif': ['Crimson Text', 'serif']
-
-    }
+      
+    },
+    extend: {},
   },
   plugins: [
     require(newLocalFlowbite)
