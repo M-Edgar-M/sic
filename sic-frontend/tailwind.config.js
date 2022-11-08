@@ -20,8 +20,9 @@ module.exports = {
       'open-sans': ['Open Sans', 'sans-serif'],
       'poppins': ['Poppins', 'sans-serif'],
       'serif': ['Crimson Text', 'serif']
-
-    }
+      
+    },
+    extend: {},
   },
   plugins: [
     require(newLocalFlowbite)

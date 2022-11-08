@@ -12,7 +12,7 @@ function App() {
   }, [dark]);
 
   return (
-    <div className="bg-white dark:bg-gray-800 text-[1.6rem]">
+    <div className="bg-white dark:bg-gray-800 text-[1.6rem] mx-3">
       <Navbar />
         <div className="bg-white dark:bg-gray-800">
           <h1 className="text-gray-900 dark:text-white">Dark mode</h1>
