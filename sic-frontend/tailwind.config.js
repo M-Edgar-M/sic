@@ -7,13 +7,14 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      'white': '#ffffff',
+      'primary': '#2563eb',
+      'midnight': '#121063',
+      'bermuda': '#78dcca',
     },
-    colors: {},
     fontFamily: {
       'josefin-sans': ['Josefin Sans', 'sans-serif'],
       'open-sans': ['Open Sans', 'sans-serif'],
