@@ -1,9 +1,20 @@
-import React from "react";
+import React, { SyntheticEvent, useState } from "react";
 
 function SearchBar() {
+  const [formState, setFormState] = useState({value: ''})
+
+  const handleChange = (e: SyntheticEvent) => {
+    setFormState({ value: (e.target as HTMLInputElement).value });
+  }
+
+  const onFormSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+    alert(formState.value);
+  }
+
   return (
-    <div>
-      <form>
+    <div className="w-1/2">
+      <form onSubmit={onFormSubmit}>
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
@@ -31,7 +42,9 @@ function SearchBar() {
           <input
             type="search"
             id="default-search"
-            className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            value={formState.value}
+            onChange={handleChange}
+            className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search Mockups, Logos..."
             required
           />
