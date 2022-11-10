@@ -51,7 +51,7 @@ function SearchBar() {
           />
           <button
             type="submit"
-            className="text-white absolute right-2.5 bottom-2.5 lg:bottom-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg lg:text-[1.6rem] text-sm px-4 py-2 lg:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white absolute right-2.5 bottom-2.5 lg:bottom-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg lg:text-[1.6rem] text-sm px-4 py-2 lg:py-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Search
           </button>
