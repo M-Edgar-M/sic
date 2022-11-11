@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import React, { useRef, useState } from "react";
 import useOnClickOutside from "../../hooks/useOnClickOutSide";
-import Img from "../../img/new-logo.png";
+import Avatar from "../../img/avatar.jpg";
 
 function User() {
   const [showSubMenu, setShowSubMenu] = useState(false);
@@ -16,19 +16,20 @@ function User() {
   useOnClickOutside(ref, handleClickOutside);
 
   return (
-    <div className="relative">
+    <>
       <img
         id="avatarButton"
         onClick={() => setShowSubMenu(!showSubMenu)}
-        className="w-10 h-10 rounded-full cursor-pointer"
-        src={Img}
+        className="w-14 h-14 rounded-full cursor-pointer"
+        src={Avatar}
         alt="User dropdown"
+        ref={ref}
       />
       <div
         id="userDropdown"
-        ref={ref}
         className={clsx(
           !showSubMenu && "hidden",
+          "absolute-pop-up",
           "z-10",
           "w-44",
           "bg-white",
@@ -39,19 +40,13 @@ function User() {
           "dark:bg-gray-700",
           "dark:divide-gray-600"
         )}
-        style={{
-          position: "absolute",
-          right: "10%",
-          margin: "0px",
-          transform: "translate(0px, 10px)",
-        }}
       >
-        <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
+        <div className="py-3 px-4 text-[1.4rem] text-gray-900 dark:text-white">
           <div>Bonnie Green</div>
           <div className="font-medium truncate">name@flowbite.com</div>
         </div>
         <ul
-          className="py-1 text-sm text-gray-700 dark:text-gray-200"
+          className="py-1 text-[1.4rem] text-gray-700 dark:text-gray-200"
           aria-labelledby="avatarButton"
         >
           <li>
@@ -82,13 +77,13 @@ function User() {
         <div className="py-1">
           <a
             href="#"
-            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            className="block py-2 px-4 text-[1.4rem] text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
           >
             Sign out
           </a>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

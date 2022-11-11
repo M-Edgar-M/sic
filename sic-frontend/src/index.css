@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 
+
+@layer components {
+    .absolute-pop-up {
+            position: absolute;
+            right: 10%;
+            margin: 0px;
+            transform: translate(0px, 10px);
+    }
+  }
+
 /* make default brauser font-size 10px or 1rem */
 html {
     font-size: 62.5%;

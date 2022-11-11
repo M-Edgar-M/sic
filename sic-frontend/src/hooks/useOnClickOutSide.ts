@@ -17,7 +17,7 @@ function useOnClickOutside<T extends HTMLElement = HTMLElement>(
       return
     }
 
-    handler(event)
+    setTimeout(() => handler(event), 200)
   })
 }
 
