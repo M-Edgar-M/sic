@@ -1,5 +1,4 @@
 import { useFormik } from "formik";
-import React, { SyntheticEvent, useState } from "react";
 import { SearchInitValues } from "../../models/FromikTypes";
 
 function SearchBar() {
