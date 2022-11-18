@@ -5,6 +5,7 @@ const auth = require('./auth.ts')
 
 module.exports = (app: Express) => {
     app.use(express.json());
+    app.use(express.urlencoded({extended: true}))
     app.use(cors());
     app.use('/user', users);
     app.use('/auth', auth);
