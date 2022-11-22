@@ -7,9 +7,6 @@ module.exports = (app: Express) => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }))
     app.use(cors());
-    // app.use('/', async (req: Request, res: Response) => {
-    //     res.send('Home page');
-    // })
     app.use('/auth', auth);
     app.use('/user', users);
 }
