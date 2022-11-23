@@ -1,15 +1,15 @@
 import express, { Request, Response } from "express";
-import { createNewUser, getUserByEmail, getUserByPublicId } from "../utilities/requests/userRequests";
+import { createNewUser, getUserByEmailClient, getUserByPublicIdClient } from "../utilities/requests/userRequests";
 const Router = require('express-promise-router')
 const pool = require('../db')
 
 const router = new Router()
 
 // GET USER BY PUBLICK ID
-router.get('/:id', getUserByPublicId)
+router.get('/:id', getUserByPublicIdClient)
 
 // GET USER BY EMAAL
-router.get('/', getUserByEmail)
+router.get('/', getUserByEmailClient)
 
 // CREATE NEW USER
 router.post("/create", createNewUser);
