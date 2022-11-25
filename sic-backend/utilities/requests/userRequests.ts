@@ -26,7 +26,7 @@ export const getUserByPublicIdClient = async (req: Request, res: Response) => {
     }
 }
 
-export const createNewUserClient = async (req: Request, res: Response) => {
+export const createNewUser = async (req: Request, res: Response) => {
     try {
         const body = req.body;
         const { rows } = await pool.query(
