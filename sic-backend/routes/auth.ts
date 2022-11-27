@@ -3,17 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { USER } from "../models/User.model";
 const Router = require('express-promise-router')
 const session = require('express-session')
-const FileStore = require('session-file-store')(session);
 const pool = require('../db')
 const pgSession = require('connect-pg-simple')(session)
+const passport = require('passport');
 // const passport = require('passport');
-interface DONE {
-  (err: Error | null, user: USER | boolean | any): void;
-}
-const LocalStrategy = require('passport-local').Strategy;
 
 const router = new Router()
-// require('../utilities/passport.auth');
 router.use(session({
   store: new pgSession({
     pool: pool,
@@ -22,26 +17,38 @@ router.use(session({
   }),
   secret: process.env.COOKIE_SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
   // Insert express-session options here
 }));
 
 
+require('../utilities/passport.auth');
 
-router.get('/', (req: Request, res: Response) => {
-  console.log(req.session)
-  if (req.session.viewCount) {
-    req.session.viewCount++
-  } else {
-    req.session.viewCount = 1;
-  }
-  res.send(`Visited this many times: ${req.session.viewCount}`)
+passport.use(passport.initialize())
+passport.use(passport.session())
+router.use(passport.authenticate('local'));
+
+
+
+
+// router.post('/login', passport.authenticate('local', {
+//   successRedirect: '/',
+//   failureRedirect: '/login'
+// }));
+router.post('/login', (req: any, res: any) => {
+  res.send('GG')
+});
+
+router.get('/', (req: any, res: any) => {
+  res.send('Success')
+})
+
+router.get('/login', (req: any, res: any) => {
+  res.send('Not Authenticated')
 })
 
 
-// router.use(passport.initialize());
-// router.use(passport.session());
 
 
 module.exports = router
