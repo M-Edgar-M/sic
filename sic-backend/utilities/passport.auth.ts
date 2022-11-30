@@ -10,46 +10,27 @@ const passportFieds: PASSPORTFIELDS = {
     passwordField: 'password'
 }
 
-passport.use(new LocalStrategy({
-    passportFieds
-}, async function verify(email: string, password: string, done: DONE) {
-    //TODO: passportFieds doesn't  work
-    console.table({
-        'email': email,
-        'password': password
-    });
+passport.serializeUser(function (user: any, done: any) {
+  done(null, user.id)
+});
+
+passport.deserializeUser(async function (user: any, done: any) {
+ const u = await getUserById(user.id);
+ console.log('🚀 ~ file: passport.auth.ts ~ line 30 ~ u', u)
+ if(u) {
+   done(null, user);
+ } else {
+   done(new Error);
+ }
+});
+
+passport.use(new LocalStrategy(
+    passportFieds,
+    async function verify(email: string, password: string, done: DONE) {
 
     const user = await getUserByEmail(email);
-    console.log('🚀 ~ file: passport.auth.ts ~ line 20 ~ user', user)
     if (!user) { return done(null, false); }
     if (email === user.email && password === user.password) {
-        console.log('Local strategy returned true')
         return done(null, user);
     }
 }));
-
-// passport.use(new LocalStrategy(function verify(username: any, password: any, cb: any) {
-//     console.log(888888888888888);
-
-//     return cb(null, {user: 'edgar'});
-//   }));
-
-passport.serializeUser(function (user: any, cb: any) {
-    console.log('Serialize: ', user);
-
-    process.nextTick(function () {
-        return cb(null, {
-            id: user.id,
-        });
-    });
-});
-
-passport.deserializeUser(function (user: any, cb: any) {
-    console.log('🚀 ~ file: passport.auth.ts ~ line 48 ~ passport.deserializeUser ~ user', user)
-    console.log('DESERIALIZE');
-
-    // TODO: this mathod doesn't run
-    process.nextTick(function () {
-        return cb(null, user);
-    });
-});

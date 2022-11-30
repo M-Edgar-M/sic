@@ -6,7 +6,6 @@ const session = require('express-session')
 const pool = require('../db')
 const pgSession = require('connect-pg-simple')(session)
 const passport = require('passport');
-// const passport = require('passport');
 
 const router = new Router()
 router.use(session({
@@ -27,26 +26,23 @@ require('../utilities/passport.auth');
 
 passport.use(passport.initialize())
 passport.use(passport.session())
-router.use(passport.authenticate('local'));
+
+router.use((req: any, res: any, next: any) => {
+  console.log(req.session);
+  console.log('user',req.user);
+  next();
+  
+})
 
 
-
-
-// router.post('/login', passport.authenticate('local', {
-//   successRedirect: '/',
-//   failureRedirect: '/login'
-// }));
-router.post('/login', (req: any, res: any) => {
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login'}),(req: any, res: any) => {
+  
   res.send('GG')
 });
 
-router.get('/', (req: any, res: any) => {
-  res.send('Success')
-})
-
 router.get('/login', (req: any, res: any) => {
-  res.send('Not Authenticated')
-})
+    res.send('GET: Login')
+  })
 
 
 
