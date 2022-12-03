@@ -7,5 +7,7 @@ declare namespace Express {
             expire: Date;
             viewCount: number | undefined;
         }
+        isAuthenticated: () => boolean;
+        logout: () => void;
     }
 }

@@ -11,7 +11,7 @@ router.get('/:id', getUserByPublicIdClient)
 // GET USER BY EMAAL
 router.get('/', getUserByEmailClient)
 
-// CREATE NEW USER
-router.post("/create", createNewUser);
+// CREATE NEW USER /user/register
+router.post("/register", createNewUser);
 
 module.exports = router

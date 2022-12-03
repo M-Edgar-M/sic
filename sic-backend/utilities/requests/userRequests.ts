@@ -35,7 +35,7 @@ export const createNewUser = async (req: Request, res: Response) => {
         );
         const { first_name, surname, email, created_on, last_login, public_id, ...rest } = rows[0]
         const userResponse: USER_RESPONSE = { first_name, surname, email, created_on, last_login, public_id };
-        return res.status(200).send(userResponse)
+         res.status(200).send(userResponse).redirect('auth/login');
     } catch (error) {
         console.error(error);
     }

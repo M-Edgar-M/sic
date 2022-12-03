@@ -10,17 +10,16 @@ const passportFieds: PASSPORTFIELDS = {
     passwordField: 'password'
 }
 
-passport.serializeUser(function (user: any, done: any) {
-  done(null, user.id)
+passport.serializeUser(function (user: USER, done: DONE) {
+  done(null, user)
 });
 
-passport.deserializeUser(async function (user: any, done: any) {
+passport.deserializeUser(async function (user: any, done: DONE) {
  const u = await getUserById(user.id);
- console.log('🚀 ~ file: passport.auth.ts ~ line 30 ~ u', u)
  if(u) {
    done(null, user);
  } else {
-   done(new Error);
+   done(new Error('User not found'), false);
  }
 });
 
@@ -29,7 +28,7 @@ passport.use(new LocalStrategy(
     async function verify(email: string, password: string, done: DONE) {
 
     const user = await getUserByEmail(email);
-    if (!user) { return done(null, false); }
+    if (!user) { return done(new Error('User not found'), false); }
     if (email === user.email && password === user.password) {
         return done(null, user);
     }

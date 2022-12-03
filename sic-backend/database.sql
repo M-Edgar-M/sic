@@ -17,7 +17,7 @@ CREATE TABLE "session" (
   "sess" json NOT NULL,
   "expire" timestamp(6) NOT NULL
 ) WITH (OIDS = FALSE);
-
+-- (CONSTRAINTS)
 ALTER TABLE
   "session"
 ADD
