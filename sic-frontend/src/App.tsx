@@ -5,12 +5,27 @@ import { UserSettingsModel } from "./models/StoreModels";
 import { themeSwitcher } from "./utilities/themeSwitcher";
 import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
+// import axios from "axios";
+import AxiosInstance from "./utilities/axios";
 
 function App() {
   const dark = useUserSetingsStore((state: UserSettingsModel) => state.dark);
   useEffect(() => {
     themeSwitcher(dark);
   }, [dark]);
+  const getData = async() => {
+    const aaa =  await  AxiosInstance.get(`/user`, {
+      params: {
+        "email": "example1@example.com"
+      }
+    })
+    console.log('🚀 ~ file: App.tsx:21 ~ getData ~ aaa', aaa)
+    return aaa;
+  } 
+  useEffect(() => {
+    getData();
+  }, [])
+  
 
   return (
     <div className="text-[1.6rem] mx-3">
