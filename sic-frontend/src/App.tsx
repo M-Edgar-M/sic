@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import logo from "./logo.svg";
-import { useUserSetingsStore } from "./store";
+import { useUserSetingsStore } from "./store/settings-store";
 import { UserSettingsModel } from "./models/StoreModels";
 import { themeSwitcher } from "./utilities/themeSwitcher";
 import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
+import Login from "./components/Login";
 
 function App() {
   const dark = useUserSetingsStore((state: UserSettingsModel) => state.dark);
@@ -24,15 +25,7 @@ function App() {
         <h1 className="text-3xl font-serif font-[600] underline text-black dark:text-white">
           Hello world!
         </h1>
-        <img src={logo} className="dark:text-white" alt="logo" />
-        <a
-          className="text-primary dark:text-white"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Login />
       </Layout>
     </div>
   );

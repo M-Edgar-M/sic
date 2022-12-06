@@ -1,6 +1,6 @@
 import React from "react";
 import { UserSettingsModel } from "../models/StoreModels";
-import { useUserSetingsStore } from "../store";
+import { useUserSetingsStore } from "../store/settings-store";
 import Button from "./Button";
 import clsx from 'clsx';
 
