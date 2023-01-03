@@ -8,7 +8,7 @@ export interface ButtonPropsInterface {
     color?: string;
     className?: string;
     children?: ReactNode;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
-export type ChildrenProps = { children: React.ReactNode }
+export type ChildrenProps = { children?: React.ReactNode }
