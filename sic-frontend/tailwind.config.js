@@ -28,6 +28,7 @@ module.exports = {
       current: 'currentColor',
       'white': '#ffffff',
       'primary': '#2563eb',
+      'primary-darker': '#2156cc',
       'midnight': '#121063',
       'bermuda': '#78dcca',
     },

@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // TODO: handle eslint warning
 import clsx from "clsx";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import useOnClickOutside from "../../hooks/useOnClickOutSide";
 import Avatar from "../../img/avatar.jpg";
 
@@ -75,12 +76,12 @@ function User() {
           </li>
         </ul>
         <div className="py-1">
-          <a
-            href="#"
+          <Link
+            to="login"
             className="block py-2 px-4 text-[1.4rem] text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
           >
             Sign out
-          </a>
+          </Link>
         </div>
       </div>
     </>
