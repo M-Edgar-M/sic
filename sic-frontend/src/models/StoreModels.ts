@@ -6,7 +6,7 @@ export interface UserSettingsModel {
 }
 
 export interface UserModel {
-  userId: number | undefined;
+  userId: number | string | undefined;
   login: (values: LoginInitValues) => void;
   register: (values: RegisterInitValues) => void;
 }

@@ -1,16 +1,33 @@
 import { useFormik } from "formik";
+import { useSnackbar } from "notistack";
+import {
+  useNavigate,
+  redirect,
+  useParams,
+  useLocation,
+} from "react-router-dom";
 import { LoginInitValues } from "../../models/FromikTypes";
 import { UserModel } from "../../models/StoreModels";
 import { useUserStore } from "../../store/user-strore";
 
 function Login() {
-  const login = useUserStore(
-    (state: UserModel) => state.login
-  );
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+
+  const login = useUserStore((state: UserModel) => state.login);
+  const userId = useUserStore((state: UserModel) => state.userId);
+
   const initial: LoginInitValues = { email: "", password: "" };
 
-  function handleSubmit(values: LoginInitValues) {
-    login(values)
+  async function handleSubmit(values: LoginInitValues) {
+    login(values);
+    if (userId) {
+      navigate("/");
+    } else {
+      enqueueSnackbar("ERRORE", {
+        variant: "error",
+      });
+    }
   }
 
   const formik = useFormik({

@@ -12,6 +12,9 @@ import {
 import Login from "./components/Login";
 import PageNotFound from "./components/404";
 import { RootRoute } from "./RootRoute";
+import { SnackbarProvider } from "notistack";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "./components/ErrorFallback";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -29,7 +32,11 @@ const router = createBrowserRouter(
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <SnackbarProvider maxSnack={3}>
+        <RouterProvider router={router} />
+      </SnackbarProvider>
+    </ErrorBoundary>
   </React.StrictMode>
 );
 

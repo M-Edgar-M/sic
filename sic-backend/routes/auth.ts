@@ -9,12 +9,16 @@ require('../utilities/passport.auth');
 passport.use(passport.initialize())
 passport.use(passport.session())
 
-// Login
-router.get('/login', passport.authenticate('local', {
-  failureRedirect: '/login'
+
+// LOGIN POST REQUEST
+router.post('/login', passport.authenticate('local', {
+  // failureRedirect: '/login'
 }), (req: Request, res: Response) => {
   console.log('is it true', req.isAuthenticated());
-  res.redirect('/');
+  const {passport} = req.session;
+  console.log('🚀 ~ file: auth.ts:26 ~ passport', passport)
+  // res.redirect('/');
+  res.status(200).send(passport.user?.public_id)
 });
 
 // Logout

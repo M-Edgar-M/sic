@@ -12,3 +12,9 @@ export interface ButtonPropsInterface {
 }
 
 export type ChildrenProps = { children?: React.ReactNode }
+
+export type ErrorFallbackProps = {
+    error: {
+        message: string;
+    }
+}
