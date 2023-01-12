@@ -1,11 +1,6 @@
 import { useFormik } from "formik";
 import { useSnackbar } from "notistack";
-import {
-  useNavigate,
-  redirect,
-  useParams,
-  useLocation,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LoginInitValues } from "../../models/FromikTypes";
 import { UserModel } from "../../models/StoreModels";
 import { useUserStore } from "../../store/user-strore";
@@ -57,7 +52,6 @@ function Login() {
             <form
               className="space-y-4 md:space-y-6"
               onSubmit={formik.handleSubmit}
-              action="#"
             >
               <div>
                 <label

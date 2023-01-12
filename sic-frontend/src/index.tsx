@@ -15,6 +15,7 @@ import { RootRoute } from "./RootRoute";
 import { SnackbarProvider } from "notistack";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorFallback";
+import Register from "./components/Register";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootRoute />}>
       <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
       <Route path="/" element={<App />}></Route>
       <Route path="*" element={<PageNotFound />} />
     </Route>

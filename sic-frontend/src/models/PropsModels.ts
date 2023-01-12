@@ -7,6 +7,7 @@ export interface ButtonPropsInterface {
     radius?: string;
     color?: string;
     className?: string;
+    buttonType?: string | undefined;
     children?: ReactNode;
     onClick?: () => void;
 }
