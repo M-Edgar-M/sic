@@ -3,7 +3,7 @@ export type USER_RESPONSE = {
     surname: string,
     email: string,
     created_on: string,
-    last_login: string,
+    last_login?: string,
     public_id: string
 }
 

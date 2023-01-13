@@ -36,9 +36,9 @@ export const createNewUser = async (req: Request, res: Response) => {
             "INSERT INTO users (first_name, surname, password, email) VALUES ($1,$2,$3,$4) RETURNING *",
             [body.first_name, body.surname, body.password, body.email]
         );
-        const { first_name, surname, email, created_on, last_login, public_id } = rows[0]
-        const userResponse: USER_RESPONSE = { first_name, surname, email, created_on, last_login, public_id };
-        res.status(200).send(userResponse).redirect('auth/login');
+        const { first_name, surname, email, created_on, public_id } = rows[0]
+        const userResponse: USER_RESPONSE = { first_name, surname, email, created_on, public_id };
+        res.status(200).send(userResponse);
     } catch (error) {
         console.error(error);
         throw createHttpError(400, { expose: false, message: error })

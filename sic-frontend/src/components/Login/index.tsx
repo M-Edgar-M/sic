@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { LoginInitValues } from "../../models/FromikTypes";
 import { UserModel } from "../../models/StoreModels";
 import { useUserStore } from "../../store/user-strore";
+import { loginValidationSchema } from "../../utilities/validationSchemas";
 
 function Login() {
   const { enqueueSnackbar } = useSnackbar();
@@ -21,6 +22,7 @@ function Login() {
     } else {
       enqueueSnackbar("ERRORE", {
         variant: "error",
+        autoHideDuration: 2000,
       });
     }
   }
@@ -28,6 +30,7 @@ function Login() {
   const formik = useFormik({
     initialValues: initial,
     onSubmit: handleSubmit,
+    validationSchema: loginValidationSchema,
   });
 
   return (
@@ -68,6 +71,9 @@ function Login() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
                 />
+                {formik.errors.email && formik.touched.email ? (
+             <div>{formik.errors.email}</div>
+           ) : null}
               </div>
               <div>
                 <label
@@ -84,6 +90,9 @@ function Login() {
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
+                {formik.errors.password && formik.touched.password ? (
+             <div>{formik.errors.password}</div>
+           ) : null}
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-start">
@@ -120,7 +129,7 @@ function Login() {
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
                 <a
-                  href="/auth/register"
+                  href="/register"
                   className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Sign up

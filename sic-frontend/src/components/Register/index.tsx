@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // TODO: handle lint warning
 import { useFormik } from "formik";
+import { Link, useNavigate } from "react-router-dom";
 import { RegisterInitValues } from "../../models/FromikTypes";
 import { UserModel } from "../../models/StoreModels";
 import { useUserStore } from "../../store/user-strore";
@@ -8,12 +9,14 @@ import { registerValidationSchema } from "../../utilities/validationSchemas";
 import Button from "../Button";
 
 export default function Register() {
+  const navigate = useNavigate();
   const register = useUserStore((state: UserModel) => state.register);
 
   const initial: RegisterInitValues = {
     first_name: "",
     surname: "",
     password: "",
+    confirmPassword: "",
     email: "",
   };
 
@@ -24,8 +27,9 @@ export default function Register() {
   });
 
   function handleSubmit(values: RegisterInitValues) {
-    console.log("🚀 ~ file: index.tsx:24 ~ handleSubmit ~ values", values);
-    register(values);
+    delete values.confirmPassword
+    register(values, navigate);
+    console.log('🚀 ~ file: index.tsx:34 ~ handleSubmit ~ values', values)
   }
 
   return (
@@ -42,6 +46,7 @@ export default function Register() {
           />
           Flowbite
         </a>
+      
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -67,6 +72,9 @@ export default function Register() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@email.com"
                 />
+                {formik.errors.email && formik.touched.email ? (
+             <div>{formik.errors.email}</div>
+           ) : null}
               </div>
               <div>
                 <label
@@ -84,6 +92,9 @@ export default function Register() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Your Name here"
                 />
+                {formik.errors.first_name && formik.touched.first_name ? (
+             <div>{formik.errors.first_name}</div>
+           ) : null}
               </div>
               <div>
                 <label
@@ -101,6 +112,9 @@ export default function Register() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Your Last Name here"
                 />
+                {formik.errors.surname && formik.touched.surname ? (
+             <div>{formik.errors.surname}</div>
+           ) : null}
               </div>
               <div>
                 <label
@@ -118,21 +132,29 @@ export default function Register() {
                   onChange={formik.handleChange}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
+                {formik.errors.password && formik.touched.password ? (
+             <div>{formik.errors.password}</div>
+           ) : null}
               </div>
               <div>
                 <label
-                  htmlFor="confirm-password"
+                  htmlFor="confirmPassword"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Confirm password
                 </label>
                 <input
-                  type="confirm-password"
-                  name="confirm-password"
-                  id="confirm-password"
+                  type="password"
+                  name="confirmPassword"
+                  id="confirmPassword"
                   placeholder="••••••••"
+                  value={formik.values.confirmPassword}
+                  onChange={formik.handleChange}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
+                {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
+             <div>{formik.errors.confirmPassword}</div>
+           ) : null}
               </div>
               <div className="flex items-start">
                 <div className="flex items-center h-5">
@@ -167,12 +189,13 @@ export default function Register() {
               </Button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}
-                <a
-                  href="#"
+                <Link
+                
+                  to="/login"
                   className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Login here
-                </a>
+                </Link>
               </p>
             </form>
           </div>
