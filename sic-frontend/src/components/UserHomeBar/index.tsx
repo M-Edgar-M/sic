@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 
 export default function UserHomeBar() {
   return (
-    <section>
-      <div className="flex items-center space-x-4 m-1">
+    <section className="ml-3">
+      <div className="flex items-center space-x-4 m-2">
         <div className="flex-shrink-0">
           <img
             className="w-12 h-12 rounded-full"

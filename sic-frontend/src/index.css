@@ -16,4 +16,5 @@
 /* make default brauser font-size 10px or 1rem */
 html {
     font-size: 62.5%;
+    overflow: hidden;
 }
