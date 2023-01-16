@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnClickOutside from "../../hooks/useOnClickOutSide";
-import Avatar from "../../img/avatar.jpg";
+import profilePicture from "../../img/docs/profile-picture.jpg"
 
 function User() {
   const [showSubMenu, setShowSubMenu] = useState(false);
@@ -22,7 +22,7 @@ function User() {
         id="avatarButton"
         onClick={() => setShowSubMenu(!showSubMenu)}
         className="w-14 h-14 rounded-full cursor-pointer"
-        src={Avatar}
+        src={profilePicture}
         alt="User dropdown"
         ref={ref}
       />
@@ -43,7 +43,7 @@ function User() {
         )}
       >
         <div className="py-3 px-4 text-[1.4rem] text-gray-900 dark:text-white">
-          <div>Bonnie Green</div>
+          <div>Jane Dow</div>
           <div className="font-medium truncate">name@flowbite.com</div>
         </div>
         <ul
@@ -51,12 +51,12 @@ function User() {
           aria-labelledby="avatarButton"
         >
           <li>
-            <a
-              href="#"
+            <Link
+              to="/profile"
               className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
-              Dashboard
-            </a>
+              Profile
+            </Link>
           </li>
           <li>
             <a
@@ -64,14 +64,6 @@ function User() {
               className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Settings
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Earnings
             </a>
           </li>
         </ul>
