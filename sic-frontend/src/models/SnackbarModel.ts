@@ -1,5 +1,3 @@
-import { OptionsObject, SnackbarKey, SnackbarMessage } from "notistack";
+import { ProviderContext } from "notistack";
 
-export interface SnackbarModel {
-    (message: SnackbarMessage, options?: OptionsObject): SnackbarKey;
-}
+export type SnackbarModel = ProviderContext['enqueueSnackbar']
