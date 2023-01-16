@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // TODO: handle lint warning
 import { useFormik } from "formik";
+import { useSnackbar } from "notistack";
 import { Link, useNavigate } from "react-router-dom";
 import { RegisterInitValues } from "../../models/FromikTypes";
 import { UserModel } from "../../models/StoreModels";
@@ -11,6 +12,7 @@ import Button from "../Button";
 export default function Register() {
   const navigate = useNavigate();
   const register = useUserStore((state: UserModel) => state.register);
+  const { enqueueSnackbar } = useSnackbar();
 
   const initial: RegisterInitValues = {
     first_name: "",
@@ -28,7 +30,7 @@ export default function Register() {
 
   function handleSubmit(values: RegisterInitValues) {
     delete values.confirmPassword
-    register(values, navigate);
+    register(values, navigate, enqueueSnackbar);
     console.log('🚀 ~ file: index.tsx:34 ~ handleSubmit ~ values', values)
   }
 
@@ -73,7 +75,7 @@ export default function Register() {
                   placeholder="name@email.com"
                 />
                 {formik.errors.email && formik.touched.email ? (
-             <div>{formik.errors.email}</div>
+             <div className="text-red-600">{formik.errors.email}</div>
            ) : null}
               </div>
               <div>
@@ -93,7 +95,7 @@ export default function Register() {
                   placeholder="Your Name here"
                 />
                 {formik.errors.first_name && formik.touched.first_name ? (
-             <div>{formik.errors.first_name}</div>
+             <div className="text-red-600">{formik.errors.first_name}</div>
            ) : null}
               </div>
               <div>
@@ -113,7 +115,7 @@ export default function Register() {
                   placeholder="Your Last Name here"
                 />
                 {formik.errors.surname && formik.touched.surname ? (
-             <div>{formik.errors.surname}</div>
+             <div className="text-red-600">{formik.errors.surname}</div>
            ) : null}
               </div>
               <div>
@@ -133,7 +135,7 @@ export default function Register() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 {formik.errors.password && formik.touched.password ? (
-             <div>{formik.errors.password}</div>
+             <div className="text-red-600">{formik.errors.password}</div>
            ) : null}
               </div>
               <div>
@@ -153,7 +155,7 @@ export default function Register() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
-             <div>{formik.errors.confirmPassword}</div>
+             <div className="text-red-600">{formik.errors.confirmPassword}</div>
            ) : null}
               </div>
               <div className="flex items-start">

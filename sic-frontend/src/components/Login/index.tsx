@@ -11,20 +11,11 @@ function Login() {
   const navigate = useNavigate();
 
   const login = useUserStore((state: UserModel) => state.login);
-  const userId = useUserStore((state: UserModel) => state.userId);
 
   const initial: LoginInitValues = { email: "", password: "" };
 
   async function handleSubmit(values: LoginInitValues) {
-    login(values);
-    if (userId) {
-      navigate("/");
-    } else {
-      enqueueSnackbar("ERRORE", {
-        variant: "error",
-        autoHideDuration: 2000,
-      });
-    }
+    login(values, navigate, enqueueSnackbar);
   }
 
   const formik = useFormik({
@@ -72,7 +63,7 @@ function Login() {
                   placeholder="name@company.com"
                 />
                 {formik.errors.email && formik.touched.email ? (
-             <div>{formik.errors.email}</div>
+             <div className="text-red-600">{formik.errors.email}</div>
            ) : null}
               </div>
               <div>
@@ -91,7 +82,7 @@ function Login() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 {formik.errors.password && formik.touched.password ? (
-             <div>{formik.errors.password}</div>
+             <div className="text-red-600">{formik.errors.password}</div>
            ) : null}
               </div>
               <div className="flex items-center justify-between">

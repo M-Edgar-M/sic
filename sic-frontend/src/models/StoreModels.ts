@@ -1,5 +1,6 @@
 import { LoginInitValues, RegisterInitValues } from "./FromikTypes";
 import { NavigateFunction } from "./ReactRouterDomModels";
+import { SnackbarModel } from "./SnackbarModel";
 
 export interface UserSettingsModel {
   dark: boolean;
@@ -8,7 +9,7 @@ export interface UserSettingsModel {
 
 export interface UserModel {
   userId: number | string | undefined;
-  login: (values: LoginInitValues) => void;
-  register: (values: RegisterInitValues, navigate: NavigateFunction) => void;
+  login: (values: LoginInitValues, navigate: NavigateFunction, enqueueSnackbar: SnackbarModel) => void;
+  register: (values: RegisterInitValues, navigate: NavigateFunction, enqueueSnackbar: SnackbarModel) => void;
 }
 
