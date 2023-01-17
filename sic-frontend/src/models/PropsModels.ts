@@ -1,4 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode, LegacyRef } from "react";
+
+export type RefType = LegacyRef<HTMLButtonElement> | undefined
 
 export interface ButtonPropsInterface {
     width?: string;

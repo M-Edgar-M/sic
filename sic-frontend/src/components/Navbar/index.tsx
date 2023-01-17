@@ -2,8 +2,7 @@ import SearchBar from "../Searchbar";
 import ThemeSwitcher from "../ThemeSwitcher";
 import Logo from "../../img/new-logo.png";
 import User from "../User/User";
-import { IoMdNotificationsOutline } from "react-icons/io";
-import { Link } from "react-router-dom";
+import Notifications from "../Notifications";
 function Navbar() {
   return (
     <div className="flex w-full h-[9vh] justify-between items-center bg-white border-t border-l border-r dark:border-b-2 rounded-lg mt-1.5 mb-2.5 shadow-bottom-grey dark:shadow-bottom-white">
@@ -17,9 +16,9 @@ function Navbar() {
         <span>
           <ThemeSwitcher />
         </span>
-        <Link className="w-[3rem] h-[3rem]" to="/notifications">
-          <IoMdNotificationsOutline className="w-full h-full dark:fill-midnight" />
-        </Link>
+        <div className="relative">
+          <Notifications />
+        </div>
         <div className="relative">
           <User />
         </div>

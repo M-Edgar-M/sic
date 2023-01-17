@@ -1,19 +1,22 @@
-import { ButtonPropsInterface } from "../models/PropsModels";
-
-
-function Button<T extends ButtonPropsInterface>({
-  width,
-  height,
-  border,
-  radius,
-  color,
-  onClick,
-  children,
-  className,
-  type
-}: T){
+import { forwardRef } from "react";
+import { ButtonPropsInterface, RefType } from "../models/PropsModels";
+function Button<T extends ButtonPropsInterface>(
+  {
+    width,
+    height,
+    border,
+    radius,
+    color,
+    onClick,
+    children,
+    className,
+    type,
+  }: T,
+  ref: RefType
+) {
   return (
     <button
+      ref={ref}
       type={type}
       onClick={onClick}
       style={{
@@ -24,8 +27,10 @@ function Button<T extends ButtonPropsInterface>({
         width,
       }}
       className={className}
-    >{children}</button>
+    >
+      {children}
+    </button>
   );
 }
 
-export default Button;
+export default forwardRef(Button);

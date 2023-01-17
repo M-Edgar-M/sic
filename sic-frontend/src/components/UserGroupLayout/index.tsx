@@ -5,7 +5,7 @@ export default function UserGroupLayout() {
       <div className="flex items-center space-x-4 m-2">
         <div className="flex-shrink-0">
           <img
-            className="w-12 h-12 rounded-full"
+            className="w-12 h-12 rounded-full p-[2px] dark:bg-white"
             src={basicAva}
             alt="Profile"
           />
@@ -19,7 +19,7 @@ export default function UserGroupLayout() {
       <div className="flex items-center space-x-4 m-2">
         <div className="flex-shrink-0">
           <img
-            className="w-12 h-12 rounded-full"
+            className="w-12 h-12 rounded-full p-[2px] dark:bg-white"
             src={basicAva}
             alt="Profile"
           />
@@ -33,7 +33,7 @@ export default function UserGroupLayout() {
       <div className="flex items-center space-x-4 m-2">
         <div className="flex-shrink-0">
           <img
-            className="w-12 h-12 rounded-full"
+            className="w-12 h-12 rounded-full p-[2px] dark:bg-white"
             src={basicAva}
             alt="Profile"
           />
@@ -47,7 +47,7 @@ export default function UserGroupLayout() {
       <div className="flex items-center space-x-4 m-2">
         <div className="flex-shrink-0">
           <img
-            className="w-12 h-12 rounded-full"
+            className="w-12 h-12 rounded-full p-[2px] dark:bg-white"
             src={basicAva}
             alt="Profile"
           />
