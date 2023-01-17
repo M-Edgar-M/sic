@@ -10,11 +10,11 @@ function Button<T extends ButtonPropsInterface>({
   onClick,
   children,
   className,
-  buttonType,
+  type
 }: T){
   return (
     <button
-      // type={buttonType}
+      type={type}
       onClick={onClick}
       style={{
         backgroundColor: color,

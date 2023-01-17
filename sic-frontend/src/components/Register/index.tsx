@@ -182,7 +182,6 @@ export default function Register() {
                   </label>
                 </div>
               </div>
-              {/* TODO: cast type of button */}
               <Button
                 type="submit"
                 className="w-full text-white bg-primary hover:bg-primary-darker focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4"
