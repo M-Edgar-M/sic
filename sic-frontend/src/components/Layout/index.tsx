@@ -4,10 +4,10 @@ import Navbar from "../Navbar";
 function Layout({ children }: ChildrenProps) {
   return (
     <main className="bg-white dark:bg-gray-800">
-      <nav className="w-[96%] m-auto">
+      <nav className="w-full m-auto">
         <Navbar />
       </nav>
-      <div className="w-[96%] m-auto">
+      <div className="w-full m-auto">
       {children}
       </div>
     </main>
